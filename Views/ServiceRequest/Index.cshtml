@@ -1,0 +1,51 @@
+﻿@model List<ServiceRequest>
+
+@{
+    ViewBag.Title = "Service Request";
+}
+
+
+<h2>Service Request</h2>
+
+<span style="color:red">@TempData["Msg"]</span><br />
+<p>
+    <a asp-controller="ServiceRequest" asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Request ID</th>
+        <th>Description</th>
+        <th>Appointment</th>
+        <th>Request Date</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.ServiceRequestId
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.AppointmentDatetime 
+            </td>
+            <td>
+                @item.RequestDate
+            </td>
+            <td>
+                @if (User.IsInRole("User"))
+                {
+                <a asp-controller="ServiceRequest" asp-action="Update">Update</a>
+                <a asp-action="Delete" asp-route-id="@item.PatientId" onclick="return ConfirmDelete()">Delete</a>
+                }
+                else if (User.IsInRole("ServiceProvider"))
+                {
+                    <a asp-controller="Quote" asp-action="Create">Send Quotion</a>
+                }
+            </td>
+        </tr>
+    }
+</table>

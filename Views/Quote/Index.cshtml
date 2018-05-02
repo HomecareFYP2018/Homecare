@@ -1,0 +1,44 @@
+﻿@model List<Quote>
+
+@{
+    ViewBag.Title = "Patient";
+}
+
+
+<h2>Patient</h2>
+
+<span style="color:red">@TempData["Msg"]</span><br />
+<p>
+    <a asp-controller="Quote" asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Quote ID</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Phone</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.QuoteId
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id="@item.QuoteId">@item.Description</a>
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                @item.Date
+
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.QuoteId" onclick="return ConfirmDelete()">Delete</a>
+            </td>
+        </tr>
+                }
+</table>

@@ -1,0 +1,52 @@
+﻿@model Quote 
+@{
+    ViewBag.Title = "New Quote";
+
+    var pokes = ViewData["pokes"] as List<dynamic>;
+    pokes.Insert(0, new { value = "", text = "-- SELECT --" });
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-sm-6">
+        <form asp-controller="Quote" asp-action="Create" method="post" class="form-horizontal" role="form">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label asp-for="Description" class="col-sm-4 control-label">Description</label>
+                    <div class="col-sm-6">
+                        <input id="txtDesc" asp-for="Description" class="form-control" />
+                    </div>
+                    <div class="has-error">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="col-sm-4 control-label">Price</label>
+                    <div class="col-sm-6">
+                        <input id="txtPrice" asp-for="Price" class="form-control" />
+                    </div>
+                    <div class="has-error">
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" asp-for="Date">Date: </label>
+                    <div class="col-sm-4">
+                        <div class='input-group date' id='BsDateTimePicker'>
+                            <input placeholder="YYYY-MM-DD" class="form-control" asp-for="Date" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model ServiceRequest
+
+
+@{
+    ViewBag.Title = "Update Service Request";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-sm-6">
+        <form asp-controller="ServiceRequest" asp-action="Update" method="post" class="form-horizontal" role="form">
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <label asp-for="Description" class="col-sm-4 control-label">Description</label>
+                    <div class="col-sm-6">
+                        <input id="txtName" asp-for="Description" class="form-control" />
+                    </div>
+                    <div class="has-error">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" asp-for="RequestDate">Request Date : </label>
+                    <div class="col-sm-6">
+                        <div class='input-group date' id='BsDateTimePicker'>
+                            <input placeholder="YYYY-MM-DD" class="form-control" asp-for="RequestDate" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" asp-for="AppointmentDatetime">AppointmentDatetime : </label>
+                    <div class="col-sm-6">
+                        <div class='input-group date' id='BsDatePicker'>
+                            <input placeholder="YYYY-MM-DD" class="form-control" asp-for="AppointmentDatetime" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Status" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-7">
+                        <input type="radio" asp-for="Status" value="New" checked="checked" /> New
+                        <input type="radio" asp-for="Status" value="Pending" /> Pending
+                        <input type="radio" asp-for="Status" value="Completed" /> Completed
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Update" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

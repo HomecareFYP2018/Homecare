@@ -1,0 +1,104 @@
+﻿@model Patient
+@{
+    ViewBag.Title = "New Patient";
+
+    var pokes = ViewData["pokes"] as List<dynamic>;
+    pokes.Insert(0, new { value = "", text = "-- SELECT --" });
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-sm-6">
+        <form asp-controller="Patient" asp-action="Create" method="post" class="form-horizontal" role="form">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label asp-for="Name" class="col-sm-4 control-label">Name</label>
+                    <div class="col-sm-6">
+                        <input id="txtName" asp-for="Name" class="form-control" />
+                    </div>
+                    <div class="has-error">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" asp-for="DateOfBirth">Date Of Birth : </label>
+                    <div class="col-sm-4">
+                        <div class='input-group date' id='BsDateTimePicker'>
+                            <input placeholder="YYYY-MM-DD" class="form-control" asp-for="DateOfBirth" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Nric" class="col-sm-4 control-label">Nric</label>
+                    <div class="col-sm-6">
+                        <input id="txtName" asp-for="Nric" class="form-control" />
+                    </div>
+                    <div class="has-error">
+                        <span asp-validation-for="Nric" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" asp-for="MedicalHistory">Medical History (Max: 200 words) : </label>
+                    <div class="col-sm-5">
+                        <input type="text" height="7" asp-for="MedicalHistory" class="form-control" />
+                    </div>
+                    <div class="has-error">
+                        <span asp-validation-for="MedicalHistory" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AnnualIncome" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-6">
+                        <input asp-for="AnnualIncome" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" asp-for="Address">Address : </label>
+                    <div class="col-sm-5">
+                        <input type="text" height="7" asp-for="Address" class="form-control" />
+                    </div>
+                    <div class="has-error">
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RelationshipToUser" class="col-sm-4 control-label">Relationship :</label>
+                    <div class="col-sm-6">
+                        <input id="txtName" asp-for="RelationshipToUser" class="form-control" />
+                    </div>
+                    <div class="has-error">
+                        <span asp-validation-for="RelationshipToUser" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Postalcode" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-6">
+                        <input asp-for="Postalcode" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-6">
+                        <input asp-for="Phone" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-7">
+                        <input type="radio" asp-for="Gender" value="M" checked="checked" /> M
+                        <input type="radio" asp-for="Gender" value="F" /> F
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
